@@ -1,0 +1,11 @@
+.category {
+  font-size: 0.8em;
+  color: #666;
+  margin-right: 15px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  min-width: 50px;
+}
