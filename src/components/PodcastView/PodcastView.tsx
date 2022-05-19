@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { FaPodcast } from 'react-icons/fa';
 
 import styles from './PodcastView.module.css';
+import AudioPlayer from '../AudioPlayer/AudioPlayer';
 
 interface Podcast {
   id: number;
@@ -27,7 +28,7 @@ interface Episode {
   enclosureUrl: string;
 }
 
-const PodcastView = (props: any) => {
+const PodcastView = () => {
   let params = useParams();
   console.log('PodcastView', params);
   const [podcast, setPodcast] = useState<Podcast | null>(null);
@@ -92,13 +93,10 @@ const PodcastView = (props: any) => {
           <div>
             <h4>Latest episode</h4>
             <p>{episodes[0].title}</p>
-            <audio controls>
-              <source
-                src={episodes[0].enclosureUrl}
-                type={episodes[0].enclosureType}
-              />
-              Your browser does not support the audio element.
-            </audio>
+            <AudioPlayer
+              audioUrl={episodes[0].enclosureUrl}
+              audioType={episodes[0].enclosureType}
+            />
           </div>
         </section>
       </section>
