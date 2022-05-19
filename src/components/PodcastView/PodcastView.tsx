@@ -15,10 +15,23 @@ interface Podcast {
   link: string;
 }
 
+interface Episode {
+  id: number;
+  title: string;
+  description: string;
+  duration: number;
+  explicit: number;
+  datePublished: Number;
+  datePublishedPretty: string;
+  enclosureType: string;
+  enclosureUrl: string;
+}
+
 const PodcastView = (props: any) => {
   let params = useParams();
   console.log('PodcastView', params);
   const [podcast, setPodcast] = useState<Podcast | null>(null);
+  const [episodes, setEpisodes] = useState<Episode[] | null>(null);
 
   useEffect(() => {
     const fetchPodcast = async () => {
@@ -27,14 +40,26 @@ const PodcastView = (props: any) => {
       );
       const data = await res.json();
 
-      console.log(data);
+      console.log('Podcast data', data);
       setPodcast(data.feed);
     };
 
     fetchPodcast();
+
+    const fetchEpisodes = async () => {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/episodes/${params.id}`
+      );
+      const data = await res.json();
+
+      console.log('Podcast episodes', data);
+      setEpisodes(data.items);
+    };
+
+    fetchEpisodes();
   }, []);
 
-  if (podcast === null) {
+  if (podcast === null || episodes === null) {
     return <p>Loading podcast ...</p>;
   }
 
@@ -64,6 +89,17 @@ const PodcastView = (props: any) => {
               Listen to this podcast
             </button>
           </a>
+          <div>
+            <h4>Latest episode</h4>
+            <p>{episodes[0].title}</p>
+            <audio controls>
+              <source
+                src={episodes[0].enclosureUrl}
+                type={episodes[0].enclosureType}
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
         </section>
       </section>
     </main>
