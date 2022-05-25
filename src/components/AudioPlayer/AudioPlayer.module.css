@@ -1,0 +1,45 @@
+.player {
+  display: flex;
+  border: 1px solid red;
+  height: 50px;
+}
+
+.player_left,
+.player_middle {
+  display: inline-block;
+  height: 100%;
+}
+
+.player_middle {
+  width: 100%;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  /* padding: 15px 32px; */
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* font-size: 16px; */
+  /* margin: 4px 2px; */
+  cursor: pointer;
+}
+
+.duration {
+  display: inline-block;
+  /* float: right; */
+  margin-right: 10px;
+
+  /* border: 1px solid rgb(100, 38, 214); */
+  height: 50px;
+  width: 100%;
+}
+
+.current_duration {
+  height: 100%;
+  background: red;
+  width: 0%;
+}

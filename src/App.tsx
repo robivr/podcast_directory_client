@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Link to="/" className="site-title">
-          <h1>Podcast Directory</h1>
+          <h1 className="text-3xl font-bold">Podcast Directory</h1>
         </Link>
         <Routes>
           <Route path="/" element={<SearchView siteConfig={siteConfig} />} />
