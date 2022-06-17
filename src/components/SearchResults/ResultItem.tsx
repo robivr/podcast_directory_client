@@ -6,7 +6,7 @@ import styles from './ResultItem.module.css';
 const ResultItem = ({ feed }: any) => {
   // console.log(feed.categories);
   return (
-    <div className={styles.result_item_container}>
+    <div className={styles.result_item_container + 'border-solid border-2'}>
       <div className={styles.artwork}>
         <img
           src={feed.artwork}

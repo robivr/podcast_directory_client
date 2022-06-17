@@ -40,8 +40,3 @@
 button {
   font-size: calc(10px + 2vmin);
 }
-
-.site-title {
-  text-decoration: none;
-  color: black;
-}

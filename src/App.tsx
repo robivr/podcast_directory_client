@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Link to="/" className="site-title">
+        <Link to="/">
           <h1 className="text-3xl font-bold">Podcast Directory</h1>
         </Link>
         <Routes>

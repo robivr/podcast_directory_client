@@ -42,7 +42,11 @@ const SearchView = ({ siteConfig }: any) => {
 
   // console.log('CONTEXT:', ctx);
 
-  const handleClick = async (e: any) => {
+  const handleSearch = async () => {
+    if (searchField === '') {
+      return;
+    }
+
     const query = encodeURI(searchField);
 
     const res = await fetch(`${import.meta.env.VITE_API_URL}/search/${query}`);
@@ -63,7 +67,13 @@ const SearchView = ({ siteConfig }: any) => {
     });
   };
 
-  const handleSearchFieldChange = (e: any) => {
+  const handleEnterPressed = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const handleSearchFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchField(e.target.value);
   };
 
@@ -74,15 +84,21 @@ const SearchView = ({ siteConfig }: any) => {
         feeds: [],
       }}
     >
-      <button onClick={handleClick}>Search</button>
-      <br />
-      <input
-        type="text"
-        placeholder="Search"
-        onChange={handleSearchFieldChange}
-      />
-      <div>
-        Feeds: {searchResultsState.count}
+      <div className="flex justify-center flex-col p-10 sm:bg-yellow-400 sm:max-w-xl mx-auto">
+        <input
+          type="text"
+          placeholder="Search podcasts"
+          onChange={handleSearchFieldChange}
+          onKeyUp={handleEnterPressed}
+          className="border-solid border-2 border-blue-500 rounded-lg text-center"
+        />
+        <br />
+        <button
+          onClick={handleSearch}
+          className="button bg-sky-400 border-solid border-2 border-blue-500 rounded-lg"
+        >
+          Search
+        </button>
         <SearchResults searchResults={searchResultsState} config={siteConfig} />
       </div>
     </SearchContext.Provider>
