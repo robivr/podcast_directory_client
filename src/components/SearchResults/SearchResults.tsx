@@ -9,7 +9,6 @@ const SearchResults = (props: any) => {
 
   const perPage = props.config.perPage;
 
-  // console.log('SearchResults props', props);
   if (props.searchResults.count === 0) return null;
 
   const handlePrevPage = (e: any) => {

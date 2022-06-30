@@ -1,20 +1,18 @@
 import React from 'react';
 
 import CategoryList from './CategoryList';
-import styles from './ResultItem.module.css';
 
 const ResultItem = ({ feed }: any) => {
-  // console.log(feed.categories);
   return (
-    <div className={styles.result_item_container + 'border-solid border-2'}>
-      <div className={styles.artwork}>
+    <div className="border-solid border-2 flex">
+      <div className="w-1/2">
         <img
           src={feed.artwork}
           alt={feed.title + ' podcast artwork'}
-          className={styles.artwork_image}
+          className="w-full content-between"
         />
       </div>
-      <div className={styles.podcast_info}>
+      <div className="w-1/2 text-sm">
         <h3>{feed.title}</h3>
         <p>by {feed.author}</p>
         {feed.categories !== null && (
