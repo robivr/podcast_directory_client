@@ -39,46 +39,11 @@ const Pagination = (props: PaginationProps) => {
     </button>
   );
 
-  // if (totalButtons > totalPageCount) {
-  //   return (
-  //     <>
-  //       <button
-  //         onClick={() => props.handlePageChange(props.page - 1)}
-  //         disabled={props.page <= 1}
-  //         className={buttonClass}
-  //       >
-  //         &lt;
-  //       </button>
-
-  //       {pageRange.map((page) => (
-  //         <button
-  //           key={page}
-  //           onClick={() => props.handlePageChange(page)}
-  //           className={
-  //             buttonClass + (page === props.page ? ' bg-indigo-500' : '')
-  //           }
-  //         >
-  //           {page}
-  //         </button>
-  //       ))}
-
-  //       <button
-  //         onClick={() => props.handlePageChange(props.page + 1)}
-  //         disabled={props.page >= totalPageCount}
-  //         className={buttonClass}
-  //       >
-  //         &gt;
-  //       </button>
-  //     </>
-  //   );
-  // }
-
   const leftButtons = (currentPage: number) => {
     const leftButtonArray = [];
 
     for (let i = currentPage - 1; i > currentPage - 1 - adjacentCount; i--) {
       if (i < 2) break;
-      //console.log(currentPage, i);
       leftButtonArray.push(
         <button
           onClick={() => props.handlePageChange(i)}
@@ -105,14 +70,11 @@ const Pagination = (props: PaginationProps) => {
     return leftButtonArray.reverse();
   };
 
-  // return <>{leftButtons(5)}</>;
-
   const rightButtons = (currentPage: number) => {
     const rightButtonArray = [];
 
     for (let i = currentPage + 1; i < currentPage + 1 + adjacentCount; i++) {
       if (i >= totalPageCount) break;
-      console.log(currentPage, i);
       rightButtonArray.push(
         <button
           onClick={() => props.handlePageChange(i)}
@@ -139,8 +101,6 @@ const Pagination = (props: PaginationProps) => {
     return rightButtonArray;
   };
 
-  // return <>{rightButtons(5)}</>;
-
   return (
     <>
       {leftButtons(props.page)}
@@ -151,36 +111,6 @@ const Pagination = (props: PaginationProps) => {
         {props.page}
       </button>
       {rightButtons(props.page)}
-    </>
-  );
-
-  return (
-    <>
-      <button
-        onClick={() => props.handlePageChange(props.page - 1)}
-        disabled={props.page <= 1}
-        className={buttonClass}
-      >
-        &lt;
-      </button>
-
-      {pageRange.map((page) => (
-        <button
-          key={page}
-          onClick={() => props.handlePageChange(page)}
-          className={buttonClass + (page === props.page ? ' bg-red-500' : '')}
-        >
-          {page}
-        </button>
-      ))}
-
-      <button
-        onClick={() => props.handlePageChange(props.page + 1)}
-        disabled={props.page >= totalPageCount}
-        className={buttonClass}
-      >
-        &gt;
-      </button>
     </>
   );
 };
