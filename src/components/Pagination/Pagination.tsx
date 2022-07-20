@@ -11,20 +11,20 @@ interface PaginationProps {
 const Pagination = (props: PaginationProps) => {
   const totalPageCount = Math.ceil(props.resultCount / props.perPage);
   const adjacentCount = props.adjacentCount ? props.adjacentCount : 1;
-  const totalButtons = adjacentCount + 3;
 
-  console.log(props.resultCount, props.perPage, totalPageCount);
   let pageRange = [];
   for (let i = 1; i <= totalPageCount; i++) {
     pageRange.push(i);
   }
 
-  const buttonClass = 'border-2 border-cyan-500 p-1 mt-1 mr-1';
+  const className =
+    'inline-flex items-center bg-white hover:bg-gray-50 border border-gray-300 text-gray-500 text-sm font-medium px-4 py-2';
+
   const prevButton = (
     <button
       onClick={() => props.handlePageChange(props.page - 1)}
       disabled={props.page <= 1}
-      className={buttonClass}
+      className="inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
     >
       &lt;
     </button>
@@ -33,7 +33,7 @@ const Pagination = (props: PaginationProps) => {
     <button
       onClick={() => props.handlePageChange(props.page + 1)}
       disabled={props.page >= totalPageCount}
-      className={buttonClass}
+      className="inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
     >
       &gt;
     </button>
@@ -45,10 +45,7 @@ const Pagination = (props: PaginationProps) => {
     for (let i = currentPage - 1; i > currentPage - 1 - adjacentCount; i--) {
       if (i < 2) break;
       leftButtonArray.push(
-        <button
-          onClick={() => props.handlePageChange(i)}
-          className={buttonClass}
-        >
+        <button onClick={() => props.handlePageChange(i)} className={className}>
           {i}
         </button>
       );
@@ -56,10 +53,7 @@ const Pagination = (props: PaginationProps) => {
 
     if (currentPage !== 1) {
       leftButtonArray.push(
-        <button
-          onClick={() => props.handlePageChange(1)}
-          className={buttonClass}
-        >
+        <button onClick={() => props.handlePageChange(1)} className={className}>
           1
         </button>
       );
@@ -76,10 +70,7 @@ const Pagination = (props: PaginationProps) => {
     for (let i = currentPage + 1; i < currentPage + 1 + adjacentCount; i++) {
       if (i >= totalPageCount) break;
       rightButtonArray.push(
-        <button
-          onClick={() => props.handlePageChange(i)}
-          className={buttonClass}
-        >
+        <button onClick={() => props.handlePageChange(i)} className={className}>
           {i}
         </button>
       );
@@ -89,7 +80,7 @@ const Pagination = (props: PaginationProps) => {
       rightButtonArray.push(
         <button
           onClick={() => props.handlePageChange(totalPageCount)}
-          className={buttonClass}
+          className={className}
         >
           {totalPageCount}
         </button>
@@ -106,7 +97,7 @@ const Pagination = (props: PaginationProps) => {
       {leftButtons(props.page)}
       <button
         onClick={() => props.handlePageChange(props.page)}
-        className={buttonClass + ' bg-red-500'}
+        className="inline-flex items-center z-10 bg-indigo-50 border-indigo-500 border px-4 py-2 text-sm font-medium"
       >
         {props.page}
       </button>
