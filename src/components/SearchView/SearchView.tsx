@@ -40,7 +40,7 @@ const SearchView = ({ siteConfig }: any) => {
     }
   );
 
-  // console.log('CONTEXT:', ctx);
+  console.log('searchResults', searchResults);
 
   const handleSearch = async () => {
     if (searchField === '') {
@@ -84,7 +84,7 @@ const SearchView = ({ siteConfig }: any) => {
         feeds: [],
       }}
     >
-      <div className="flex justify-center flex-col p-10 sm:bg-yellow-400 sm:max-w-xl mx-auto">
+      <div className="flex justify-center flex-col p-4 sm:bg-yellow-400 sm:max-w-xl mx-auto">
         <input
           type="text"
           placeholder="Search podcasts"
@@ -95,7 +95,7 @@ const SearchView = ({ siteConfig }: any) => {
         <br />
         <button
           onClick={handleSearch}
-          className="button bg-sky-400 border-solid border-2 border-blue-500 rounded-lg"
+          className="inline-flex justify-center w-full font-medium bg-sky-400 border-solid border-2 border-blue-500 rounded-lg"
         >
           Search
         </button>

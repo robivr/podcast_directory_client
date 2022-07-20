@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import Pagination from '../Pagination/Pagination';
 import ResultItem from './ResultItem';
 import styles from './SearchResults.module.css';
 
@@ -11,12 +12,8 @@ const SearchResults = (props: any) => {
 
   if (props.searchResults.count === 0) return null;
 
-  const handlePrevPage = (e: any) => {
-    setPage(page - 1);
-  };
-
-  const handleNextPage = (e: any) => {
-    setPage(page + 1);
+  const handlePageChange = (currPage: number) => {
+    setPage(currPage);
   };
 
   return (
@@ -33,15 +30,12 @@ const SearchResults = (props: any) => {
             </li>
           ))}
       </ul>
-      <button onClick={handlePrevPage} disabled={page <= 1}>
-        Prev
-      </button>
-      <button
-        onClick={handleNextPage}
-        disabled={page >= Math.ceil(props.searchResults.count / perPage)}
-      >
-        Next
-      </button>
+      <Pagination
+        page={page}
+        resultCount={props.searchResults.count}
+        perPage={perPage}
+        handlePageChange={handlePageChange}
+      />
     </div>
   );
 };
