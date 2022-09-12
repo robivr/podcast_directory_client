@@ -95,7 +95,7 @@ const SearchView = ({ siteConfig }: any) => {
         <br />
         <button
           onClick={handleSearch}
-          className="w-full font-medium bg-sky-400 border-solid border border-indigo-500 rounded-md"
+          className="w-full font-medium bg-sky-400 border-solid border border-indigo-500 rounded-md text-white"
         >
           Search
         </button>
