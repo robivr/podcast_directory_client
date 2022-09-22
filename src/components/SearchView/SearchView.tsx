@@ -40,8 +40,6 @@ const SearchView = ({ siteConfig }: any) => {
     }
   );
 
-  console.log('searchResults', searchResults);
-
   const handleSearch = async () => {
     if (searchField === '') {
       return;
@@ -51,8 +49,6 @@ const SearchView = ({ siteConfig }: any) => {
 
     const res = await fetch(`${import.meta.env.VITE_API_URL}/search/${query}`);
     const data = await res.json();
-
-    console.log(data);
 
     const results = {
       count: data.count,
