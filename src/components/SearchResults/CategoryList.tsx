@@ -3,7 +3,6 @@ import React from 'react';
 import styles from './CategoryList.module.css';
 
 const CategoryList = ({ categories }: any) => {
-  // console.log(categories);
   return (
     <div>
       {Object.keys(categories).map((categoryKey: any) => (

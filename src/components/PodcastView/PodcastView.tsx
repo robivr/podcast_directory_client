@@ -30,7 +30,7 @@ interface Episode {
 
 const PodcastView = () => {
   let params = useParams();
-  console.log('PodcastView', params);
+
   const [podcast, setPodcast] = useState<Podcast | null>(null);
   const [episodes, setEpisodes] = useState<Episode[] | null>(null);
 
@@ -41,7 +41,6 @@ const PodcastView = () => {
       );
       const data = await res.json();
 
-      console.log('Podcast data', data);
       setPodcast(data.feed);
     };
 
@@ -53,7 +52,6 @@ const PodcastView = () => {
       );
       const data = await res.json();
 
-      console.log('Podcast episodes', data);
       setEpisodes(data.items);
     };
 

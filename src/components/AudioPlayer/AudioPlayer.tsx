@@ -30,15 +30,12 @@ const AudioPlayer = (props: AudioPlayerProps) => {
   };
 
   const handleTimeChange = (e: React.ChangeEvent<HTMLAudioElement>) => {
-    console.log('timer go brrrrrr');
     currentDurationRef.current!.style.width = `${
       (e.target.currentTime / e.target.duration) * 100
     }%`;
   };
 
-  const handleMouseEnterDuration = (e: any) => {
-    // console.log(e);
-  };
+  const handleMouseEnterDuration = (e: any) => {};
 
   const handleSeekClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const clickX = e.clientX;
