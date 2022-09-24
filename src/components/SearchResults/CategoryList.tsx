@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './CategoryList.module.css';
 
 const CategoryList = ({ categories }: any) => {
