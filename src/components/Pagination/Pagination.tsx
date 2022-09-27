@@ -20,6 +20,7 @@ const Pagination = (props: PaginationProps) => {
 
   const prevButton = (
     <button
+      key="<"
       onClick={() => props.handlePageChange(props.page - 1)}
       disabled={props.page <= 1}
       className="inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
@@ -29,6 +30,7 @@ const Pagination = (props: PaginationProps) => {
   );
   const nextButton = (
     <button
+      key=">"
       onClick={() => props.handlePageChange(props.page + 1)}
       disabled={props.page >= totalPageCount}
       className="inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
@@ -43,7 +45,11 @@ const Pagination = (props: PaginationProps) => {
     for (let i = currentPage - 1; i > currentPage - 1 - adjacentCount; i--) {
       if (i < 2) break;
       leftButtonArray.push(
-        <button onClick={() => props.handlePageChange(i)} className={className}>
+        <button
+          key={i}
+          onClick={() => props.handlePageChange(i)}
+          className={className}
+        >
           {i}
         </button>
       );
@@ -51,7 +57,11 @@ const Pagination = (props: PaginationProps) => {
 
     if (currentPage !== 1) {
       leftButtonArray.push(
-        <button onClick={() => props.handlePageChange(1)} className={className}>
+        <button
+          key={1}
+          onClick={() => props.handlePageChange(1)}
+          className={className}
+        >
           1
         </button>
       );
@@ -68,7 +78,11 @@ const Pagination = (props: PaginationProps) => {
     for (let i = currentPage + 1; i < currentPage + 1 + adjacentCount; i++) {
       if (i >= totalPageCount) break;
       rightButtonArray.push(
-        <button onClick={() => props.handlePageChange(i)} className={className}>
+        <button
+          key={i}
+          onClick={() => props.handlePageChange(i)}
+          className={className}
+        >
           {i}
         </button>
       );
@@ -77,6 +91,7 @@ const Pagination = (props: PaginationProps) => {
     if (currentPage !== totalPageCount) {
       rightButtonArray.push(
         <button
+          key={totalPageCount}
           onClick={() => props.handlePageChange(totalPageCount)}
           className={className}
         >
@@ -91,7 +106,7 @@ const Pagination = (props: PaginationProps) => {
   };
 
   return (
-    <>
+    <div className="pagination">
       {leftButtons(props.page)}
       <button
         onClick={() => props.handlePageChange(props.page)}
@@ -100,7 +115,7 @@ const Pagination = (props: PaginationProps) => {
         {props.page}
       </button>
       {rightButtons(props.page)}
-    </>
+    </div>
   );
 };
 
