@@ -15,8 +15,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Link to="/">
-          <div className="flex items-center justify-center">
-            <img src="/podcast_directory_logo.png" />
+          <div className="flex items-center justify-center my-4">
+            <img src="/podcast_directory_logo.png" className="w-72" />
           </div>
         </Link>
         <Routes>
