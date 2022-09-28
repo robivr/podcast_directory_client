@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import CategoryList from '../SearchResults/CategoryList';
+
 interface Podcast {
   id: number;
   title: string;
@@ -10,6 +12,7 @@ interface Podcast {
   episodeCount: number;
   explicit: boolean;
   link: string;
+  categories: [string];
 }
 
 interface Episode {
@@ -72,7 +75,8 @@ const PodcastView = () => {
           />
         </div>
         <div className="info-row-right px-4">
-          <p>Hosted by: {podcast.author}</p>
+          <p className="mb-1">Hosted by: {podcast.author}</p>
+          <CategoryList categories={podcast.categories} />
         </div>
       </section>
       <section className="description p-4 leading-5">
@@ -80,7 +84,7 @@ const PodcastView = () => {
       </section>
       <section className="player flex flex-col items-center">
         <h3 className="text-xl font-semibold mb-1">
-          Listen to the last episode
+          Listen to the lastest episode
         </h3>
         <p className="mb-1">{episodes[0].title}</p>
         <audio controls>
