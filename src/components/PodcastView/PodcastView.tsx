@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { FaPodcast } from 'react-icons/fa';
-
-import styles from './PodcastView.module.css';
-import AudioPlayer from '../AudioPlayer/AudioPlayer';
 
 interface Podcast {
   id: number;
@@ -63,40 +59,37 @@ const PodcastView = () => {
   }
 
   return (
-    <main className={styles.main}>
-      <section className={styles.podcast_info}>
-        <section className={styles.podcast_info__left}>
+    <main className="p-4 lg:flex lg:flex-col lg:items-center">
+      <section className="mb-4">
+        <h2 className="text-xl font-bold">{podcast.title}</h2>
+      </section>
+      <section className="info-row flex">
+        <div className="info-row-left">
           <img
             src={podcast.artwork}
             alt={podcast.title + ' podcast artwork'}
-            className={styles.podcast_artwork}
+            className="w-64 rounded-lg"
           />
-          <section>
-            <p className={styles.podcast_description}>{podcast.description}</p>
-            <span className={styles.hosted_by}>hosted by</span>
-            <p className={styles.podcast_author}>{podcast.author}</p>
-          </section>
-        </section>
-        <section className={styles.podcast_info__right}>
-          <h1 className={styles.podcast_title}>{podcast.title}</h1>
-          <p className={styles.podcast_episode_count}>
-            {podcast.episodeCount} episodes
-          </p>
-          <a href={podcast.link}>
-            <button>
-              <FaPodcast />
-              Listen to this podcast
-            </button>
-          </a>
-          <div>
-            <h4>Latest episode</h4>
-            <p>{episodes[0].title}</p>
-            <AudioPlayer
-              audioUrl={episodes[0].enclosureUrl}
-              audioType={episodes[0].enclosureType}
-            />
-          </div>
-        </section>
+        </div>
+        <div className="info-row-right px-4">
+          <p>Hosted by: {podcast.author}</p>
+        </div>
+      </section>
+      <section className="description p-4 leading-5">
+        {podcast.description}
+      </section>
+      <section className="player flex flex-col items-center">
+        <h3 className="text-xl font-semibold mb-1">
+          Listen to the last episode
+        </h3>
+        <p className="mb-1">{episodes[0].title}</p>
+        <audio controls>
+          <source
+            src={episodes[0].enclosureUrl}
+            type={episodes[0].enclosureType}
+          />
+          Your browser does not support the audio element.
+        </audio>
       </section>
     </main>
   );
