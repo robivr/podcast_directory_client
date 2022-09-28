@@ -80,7 +80,7 @@ const SearchView = ({ siteConfig }: any) => {
         feeds: [],
       }}
     >
-      <div className="flex justify-center flex-col p-4 mx-auto">
+      <div className="flex justify-center flex-col p-4 mx-auto xl:w-[50%]">
         <input
           type="text"
           placeholder="Search podcasts"

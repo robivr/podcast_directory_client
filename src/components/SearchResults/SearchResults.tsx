@@ -17,9 +17,14 @@ const SearchResults = (props: any) => {
   };
 
   return (
-    <div>
-      <span>Page {page}</span>
-      <ul className={styles.result_list}>
+    <div className="pt-4">
+      <Pagination
+        page={page}
+        resultCount={props.searchResults.count}
+        perPage={perPage}
+        handlePageChange={handlePageChange}
+      />
+      <ul className="my-4">
         {props.searchResults['feeds']
           .slice((page - 1) * perPage, perPage * page)
           .map((feed: any) => (
