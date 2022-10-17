@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { MdPodcasts } from 'react-icons/md';
 
 import CategoryList from '../SearchResults/CategoryList';
 
@@ -62,31 +63,41 @@ const PodcastView = () => {
   }
 
   return (
-    <main className="p-4 lg:flex lg:flex-col lg:items-center">
-      <section className="mb-4">
-        <h2 className="text-xl font-bold">{podcast.title}</h2>
+    <main className="p-4 lg:inline-flex lg:flex-col lg:items-center lg:w-1/2">
+      <section className="mb-4 lg:mb-8">
+        <h2 className="text-xl font-bold lg:text-6xl">{podcast.title}</h2>
       </section>
-      <section className="info-row flex">
+      <section className="info-row flex lg:items-center lg:justify-center lg:mb-8">
         <div className="info-row-left">
           <img
             src={podcast.artwork}
             alt={podcast.title + ' podcast artwork'}
-            className="w-64 rounded-lg"
+            className="w-64 rounded-lg lg:w-40"
           />
         </div>
-        <div className="info-row-right px-4">
-          <p className="mb-1">Hosted by: {podcast.author}</p>
+        <div className="info-row-right px-4 lg:w-[50%]">
+          <p className="mb-1 font-semibold lg:text-xl">
+            Hosted by: {podcast.author}
+          </p>
           <CategoryList categories={podcast.categories} />
         </div>
       </section>
-      <section className="description p-4 leading-5">
+      <section className="description p-4 leading-5 text-lg">
         {podcast.description}
+        <span className="block mt-2">
+          <a href={podcast.link} className="font-semibold hover:underline">
+            <span>
+              <MdPodcasts className="inline mr-2 mb-1" />
+              View podcast website
+            </span>
+          </a>
+        </span>
       </section>
-      <section className="player flex flex-col items-center">
+      <section className="player flex flex-col items-center mt-4">
         <h3 className="text-xl font-semibold mb-1">
           Listen to the lastest episode
         </h3>
-        <p className="mb-1">{episodes[0].title}</p>
+        <p className="mb-4">{episodes[0].title}</p>
         <audio controls>
           <source
             src={episodes[0].enclosureUrl}

@@ -80,21 +80,21 @@ const SearchView = ({ siteConfig }: any) => {
         feeds: [],
       }}
     >
-      <div className="flex justify-center flex-col p-4 mx-auto xl:w-[50%]">
-        <input
-          type="text"
-          placeholder="Search podcasts"
-          onChange={handleSearchFieldChange}
-          onKeyUp={handleEnterPressed}
-          className="block w-full rounded-md border-blue-500 border shadow-sm text-center focus:ring-0 focus:border-red-500 focus:border"
-        />
-        <br />
-        <button
-          onClick={handleSearch}
-          className="w-full font-medium bg-sky-400 border-solid border border-indigo-500 rounded-md text-white"
-        >
-          Search
-        </button>
+      <div className="flex justify-center flex-col p-4 mx-auto xl:w-[40%]">
+        <div className="w-full flex">
+          <input
+            placeholder="Search podcasts"
+            className="rounded-l-md border border-blue-500 pl-4 text-black py-1 outline-0 focus:border-indigo-500 basis-full"
+            onChange={handleSearchFieldChange}
+            onKeyUp={handleEnterPressed}
+          />
+          <button
+            className="border border-blue-500 bg-blue-500 rounded-r-md p-1 text-white outline-0"
+            onClick={handleSearch}
+          >
+            Search
+          </button>
+        </div>
         <SearchResults searchResults={searchResultsState} config={siteConfig} />
       </div>
     </SearchContext.Provider>
