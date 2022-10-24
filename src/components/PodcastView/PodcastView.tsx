@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { MdPodcasts } from 'react-icons/md';
 
 import CategoryList from '../SearchResults/CategoryList';
+import AudioPlayerComponents from '../AudioPlayer/AudioPlayerComponent';
 
 interface Podcast {
   id: number;
@@ -67,7 +68,7 @@ const PodcastView = () => {
       <section className="mb-4 lg:mb-8">
         <h2 className="text-xl font-bold lg:text-6xl">{podcast.title}</h2>
       </section>
-      <section className="info-row flex lg:items-center lg:justify-center lg:mb-8">
+      <section className="info-row flex lg:items-center lg:justify-center lg:mb-8 w-full">
         <div className="info-row-left">
           <img
             src={podcast.artwork}
@@ -105,6 +106,7 @@ const PodcastView = () => {
           />
           Your browser does not support the audio element.
         </audio>
+        <AudioPlayerComponents episodes={episodes} />
       </section>
     </main>
   );
