@@ -27,6 +27,7 @@ interface Episode {
   datePublishedPretty: string;
   enclosureType: string;
   enclosureUrl: string;
+  image: string;
 }
 
 const PodcastView = () => {
@@ -99,14 +100,9 @@ const PodcastView = () => {
           Listen to the lastest episode
         </h3>
         <p className="mb-4">{episodes[0].title}</p>
-        <audio controls>
-          <source
-            src={episodes[0].enclosureUrl}
-            type={episodes[0].enclosureType}
-          />
-          Your browser does not support the audio element.
-        </audio>
-        <AudioPlayerComponents episodes={episodes} />
+        <div className="border">
+          <AudioPlayerComponents episodes={episodes} />
+        </div>
       </section>
     </main>
   );
