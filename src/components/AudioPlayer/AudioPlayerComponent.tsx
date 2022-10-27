@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import AudioPlayer from 'react-modern-audio-player';
 
 interface Episode {
@@ -20,52 +20,37 @@ interface AudioPlayerProps {
   episodes: Episode[];
 }
 
-const placement = {
-  interface: {
-    templateArea: {
-      progress: 'row2-1',
-      trackTimeCurrent: 'row2-3',
-      trackTimeDuration: 'row2-4',
-    },
-  },
+interface PlaylistItem {
+  id: number;
+  src: string;
+  name: string;
+  img: string;
+}
+
+const activeUI = {
+  all: true,
+  repeatType: false,
+  trackInfo: false,
+  artwork: false,
 };
 
 const AudioPlayerComponents = (props: AudioPlayerProps) => {
+  const [playlist, setPlaylist] = useState<PlaylistItem[]>([]);
   const { episodes } = props;
 
-  const playlist = [
-    {
-      id: 0,
-      src: episodes[0].enclosureUrl,
-      name: episodes[0].title,
-      img: episodes[0].image,
-    },
-    {
-      id: 1,
-      src: episodes[1].enclosureUrl,
-      name: episodes[1].title,
-      img: episodes[1].image,
-    },
-    {
-      id: 2,
-      src: episodes[2].enclosureUrl,
-      name: episodes[2].title,
-      img: episodes[2].image,
-    },
-    {
-      id: 3,
-      src: episodes[3].enclosureUrl,
-      name: episodes[3].title,
-      img: episodes[3].image,
-    },
-  ];
+  useEffect(() => {
+    const newPlaylist = episodes.map((ep, i) => {
+      return {
+        id: i,
+        src: ep.enclosureUrl,
+        name: ep.title,
+        img: ep.image,
+      };
+    });
+    setPlaylist(newPlaylist);
+  }, []);
 
-  const activeUI = {
-    all: true,
-    repeatType: false,
-    trackInfo: false,
-    artwork: false,
-  };
+  console.log('redraw', playlist, episodes);
 
   return (
     <AudioPlayer
@@ -84,7 +69,6 @@ const AudioPlayerComponents = (props: AudioPlayerProps) => {
             trackInfo: 'row3-1',
           },
         },
-        // player: 'bottom-left',
       }}
     />
   );

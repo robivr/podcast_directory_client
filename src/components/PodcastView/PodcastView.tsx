@@ -95,12 +95,12 @@ const PodcastView = () => {
           </a>
         </span>
       </section>
-      <section className="player flex flex-col items-center mt-4">
+      <section className="player flex flex-col items-center mt-4 w-full">
         <h3 className="text-xl font-semibold mb-1">
           Listen to the lastest episode
         </h3>
         <p className="mb-4">{episodes[0].title}</p>
-        <div className="border">
+        <div className="border lg:w-2/3">
           <AudioPlayerComponents episodes={episodes} />
         </div>
       </section>
