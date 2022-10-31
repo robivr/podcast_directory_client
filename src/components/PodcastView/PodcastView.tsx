@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { MdPodcasts } from 'react-icons/md';
 
 import CategoryList from '../SearchResults/CategoryList';
+import AudioPlayerComponents from '../AudioPlayer/AudioPlayerComponent';
 
 interface Podcast {
   id: number;
@@ -26,6 +27,7 @@ interface Episode {
   datePublishedPretty: string;
   enclosureType: string;
   enclosureUrl: string;
+  image: string;
 }
 
 const PodcastView = () => {
@@ -67,7 +69,7 @@ const PodcastView = () => {
       <section className="mb-4 lg:mb-8">
         <h2 className="text-xl font-bold lg:text-6xl">{podcast.title}</h2>
       </section>
-      <section className="info-row flex lg:items-center lg:justify-center lg:mb-8">
+      <section className="info-row flex lg:items-center lg:justify-center lg:mb-8 w-full">
         <div className="info-row-left">
           <img
             src={podcast.artwork}
@@ -93,18 +95,14 @@ const PodcastView = () => {
           </a>
         </span>
       </section>
-      <section className="player flex flex-col items-center mt-4">
+      <section className="player flex flex-col items-center mt-4 w-full">
         <h3 className="text-xl font-semibold mb-1">
           Listen to the lastest episode
         </h3>
         <p className="mb-4">{episodes[0].title}</p>
-        <audio controls>
-          <source
-            src={episodes[0].enclosureUrl}
-            type={episodes[0].enclosureType}
-          />
-          Your browser does not support the audio element.
-        </audio>
+        <div className="border lg:w-2/3">
+          <AudioPlayerComponents episodes={episodes} />
+        </div>
       </section>
     </main>
   );
