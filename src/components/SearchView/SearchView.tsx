@@ -1,7 +1,8 @@
-import React, { useState, useReducer, useContext } from 'react';
+import React, { useState, useReducer, useContext, useEffect } from 'react';
 
 import SearchResults from '../SearchResults/SearchResults';
 import SearchContext from '../../store/search-context.js';
+import Trending from '../Trending/Trending';
 
 interface SearchResults {
   count: number;
@@ -37,6 +38,7 @@ const SearchView = ({ siteConfig }: any) => {
     {
       count: 0,
       feeds: [],
+      query: '',
     }
   );
 
@@ -78,6 +80,7 @@ const SearchView = ({ siteConfig }: any) => {
       value={{
         count: 0,
         feeds: [],
+        query: '',
       }}
     >
       <div className="flex justify-center flex-col p-4 mx-auto xl:w-[40%]">
@@ -96,6 +99,7 @@ const SearchView = ({ siteConfig }: any) => {
           </button>
         </div>
         <SearchResults searchResults={searchResultsState} config={siteConfig} />
+        {searchResultsState.count === 0 && <Trending />}
       </div>
     </SearchContext.Provider>
   );
