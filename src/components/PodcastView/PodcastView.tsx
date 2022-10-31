@@ -65,11 +65,11 @@ const PodcastView = () => {
   }
 
   return (
-    <main className="p-4 lg:inline-flex lg:flex-col lg:items-center lg:w-1/2">
+    <main className="p-4 lg:inline-flex lg:flex-col lg:items-center lg:w-2/3 xl:w-1/2 lg:border">
       <section className="mb-4 lg:mb-8">
         <h2 className="text-xl font-bold lg:text-6xl">{podcast.title}</h2>
       </section>
-      <section className="info-row flex lg:items-center lg:justify-center lg:mb-8 w-full">
+      <section className="info-row flex items-center lg:justify-center lg:mb-8 w-full lg:w-1/2 flex-col lg:flex-row">
         <div className="info-row-left">
           <img
             src={podcast.artwork}
@@ -78,19 +78,19 @@ const PodcastView = () => {
           />
         </div>
         <div className="info-row-right px-4 lg:w-[50%]">
-          <p className="mb-1 font-semibold lg:text-xl">
+          <p className="my-1 font-semibold lg:text-xl lg:mt-0">
             Hosted by: {podcast.author}
           </p>
           <CategoryList categories={podcast.categories} />
         </div>
       </section>
       <section className="description p-4 leading-5 text-lg">
-        {podcast.description}
+        <p className="lg:px-16">{podcast.description}</p>
         <span className="block mt-2">
           <a href={podcast.link} className="font-semibold hover:underline">
             <span>
               <MdPodcasts className="inline mr-2 mb-1" />
-              View podcast website
+              Visit podcast website
             </span>
           </a>
         </span>
