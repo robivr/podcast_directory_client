@@ -14,11 +14,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Link to="/">
-          <div className="flex items-center justify-center my-4">
+        <div className="flex items-center justify-center my-4">
+          <Link to="/">
             <img src="/podcast_directory_logo.png" className="w-72" />
-          </div>
-        </Link>
+          </Link>
+        </div>
         <Routes>
           <Route path="/" element={<SearchView siteConfig={siteConfig} />} />
           <Route path="/podcast" element={<PodcastView />}>
