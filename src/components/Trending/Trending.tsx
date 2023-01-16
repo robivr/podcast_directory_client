@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Trending = () => {
   const [trendingData, setTrendingData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -10,12 +11,25 @@ const Trending = () => {
       const data = await res.json();
       console.log(data);
       setTrendingData(data.feeds);
+      setLoading(false);
 
       return data;
     };
 
     getData();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center pt-20">
+        <h3 className="text-xl font-semibold">Loading podcasts</h3>
+        <p>
+          Loading podcasts. This is a demo app and the server is hosted on a
+          free tier so it might take a few seconds to wake up.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div>
