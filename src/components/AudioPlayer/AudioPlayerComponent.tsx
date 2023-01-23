@@ -50,8 +50,6 @@ const AudioPlayerComponents = (props: AudioPlayerProps) => {
     setPlaylist(newPlaylist);
   }, []);
 
-  console.log('redraw', playlist, episodes);
-
   return (
     <AudioPlayer
       rootContainerProps={{ colorScheme: 'light' }}

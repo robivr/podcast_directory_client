@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import styles from './Trending.module.css';
+import SearchContext from '../../store/search-context';
 
 const Trending = () => {
   const [trendingData, setTrendingData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const ctx = useContext(SearchContext);
+
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/trending`);
       const data = await res.json();
-      console.log(data);
       setTrendingData(data.feeds);
       setLoading(false);
 
@@ -17,6 +21,8 @@ const Trending = () => {
     };
 
     getData();
+
+    ctx.clearInput();
   }, []);
 
   if (loading) {
@@ -27,6 +33,7 @@ const Trending = () => {
           Loading podcasts. This is a demo app and the server is hosted on a
           free tier so it might take a few seconds to wake up.
         </p>
+        <div className={styles.rings + ' w-32 h-32 test'}></div>
       </div>
     );
   }
@@ -37,7 +44,7 @@ const Trending = () => {
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
         {trendingData.map((feed: any) => (
           <Link to={`/podcast/${feed.id}`} key={feed.id}>
-            <div className="border p-4 rounded-xl bg-gray-600 h-full">
+            <div className="p-4 rounded-xl bg-gray-500 h-full">
               <img
                 className="rounded-xl"
                 src={feed.artwork}
