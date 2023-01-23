@@ -40,10 +40,3 @@
 button {
   font-size: calc(10px + 2vmin);
 }
-
-body {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%230099ff' fill-opacity='1' d='M0 96L48 101.3C96 107 192 117 288 149.3C384 181 480 235 576 218.7C672 203 768 117 864 96C960 75 1056 117 1152 149.3C1248 181 1344 203 1392 213.3L1440 224L1440 320L1392 320C1344 320 1248 320 1152 320C1056 320 960 320 864 320C768 320 672 320 576 320C480 320 384 320 288 320C192 320 96 320 48 320L0 320Z'%3E%3C/path%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-attachment: fixed;
-}
