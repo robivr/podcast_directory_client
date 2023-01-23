@@ -1,8 +1,8 @@
-# Podcast Directory client
+# Podcast Directory
 
-This is a simple podcast directory written in React. It uses the [Podcast Index](https://podcastindex.org/) API to get the podcast data.
+Welcome to the Podcast Directory, a web application that allows users to explore and listen to their favorite podcasts. With this app, users can view trending podcasts, search for specific podcasts, and listen to podcast episodes.
 
-The home page shows 12 podcasts that are trending, users can search for their favorite podcasts and listen to podcast episodes.
+The app was built using React and utilizes React Router for client-side routing and React Context for state management. The app also makes use of APIs to fetch podcast data and a simple backend server built with Node.js and Express.
 
 ## Demo
 
@@ -12,7 +12,10 @@ _NOTE: The server is hosted on a free plan and goes to sleep after some time of 
 
 ## Things I learned with this project
 
-- [React Router](https://reactrouter.com/)
-- React Context
-- Using APIs, in this case [Podcast Index](https://podcastindex.org/)
-- Creating a simple backend server with Node.js and Express
+Through building this project, I learned how to:
+
+- Use React Router for client-side routing
+- Implement state management using React Context
+- Consume APIs to fetch and display data
+- Create a simple backend server using Node.js and Express
+- Try it out for yourself and discover new podcasts to listen to!
